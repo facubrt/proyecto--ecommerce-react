@@ -10,17 +10,15 @@ function App() {
   let producto1 = {id: 1, name: 'zapatilla', price: 100};
   let producto2 = {id: 2, name: 'linterna', price: 200};
 
-  function alertHolaMundo () {
-    return alert('hola mundo');
-  }
+  let valorInicial = 4;
 
   return (
     <ChakraProvider>
       <NavBar/>
-      <Bienvenida/>
-      <Producto item={producto1} color={'coral'} alertHolaMundo={alertHolaMundo}/>
-      <Producto item={producto2} color={'coral'} alertHolaMundo={alertHolaMundo}/>
-      <Footer/>
+      {/* <Bienvenida/>
+      <Producto item={producto1} color={'coral'} value={valorInicial}/>
+      <Producto item={producto1} color={'blue'} value={valorInicial}/>
+      <Footer/> */}
     </ChakraProvider>
   );
 }
