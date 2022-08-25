@@ -27,12 +27,12 @@ export default function Producto( {item, color, value} ) {
   // }, [contador2])
 
   // CUANDO MUERE EL COMPONENTE O DESMONTA
-  useEffect (() => {
+  // useEffect (() => {
     
-    return () => {
+  //   return () => {
       
-    }
-  }, [])
+  //   }
+  // }, [])
 
     return (
     <div>

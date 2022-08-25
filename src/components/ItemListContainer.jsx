@@ -1,11 +1,12 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react'
-import Producto from './components/Producto';
+import Producto from '../components/Producto';
 
 export default function ItemListContainer({greeting}) {
 
-    let producto1 = {id: 1, name: 'zapatilla', price: 100};
-    let producto2 = {id: 2, name: 'linterna', price: 200};
+  let valorInicial = 4;
+  let producto1 = {id: 1, name: 'zapatilla', price: 100};
+  let producto2 = {id: 2, name: 'linterna', price: 200};
 
   return (
     <Box>
