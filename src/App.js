@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 
 import { ChakraProvider } from '@chakra-ui/react';
 import ItemListContainer from './components/ItemListContainer';
+import Promesas from './test/Promesas';
 
 function App() {
 
