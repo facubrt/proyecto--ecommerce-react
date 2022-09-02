@@ -4,21 +4,24 @@ import Footer from './components/Footer';
 
 import { ChakraProvider } from '@chakra-ui/react';
 import ItemListContainer from './components/ItemListContainer';
-import FetchArrayContainer from './test/FetchArrayContainer';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
-
-
-
-  //let valorInicial = 4;
-  let greeting = 'Bienvenido';
-
   return (
     <ChakraProvider>
+      <BrowserRouter>
+      {/* NAVBAR */}
       <NavBar/>
-      <ItemListContainer greeting={greeting}/>
-      <Footer/>
-    </ChakraProvider>
+        <Routes>
+          <Route exact path='/' element={<ItemListContainer/>}/>
+          <Route exact path='/category/:id' element={<ItemListContainer/>}/>
+          <Route exact path='/product/:id' element={<ItemDetailContainer/>}/>
+        </Routes>
+        {/* FOOTER */}
+        <Footer/>
+      </BrowserRouter>
+      </ChakraProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import CartWidget from './CartWidget'
-import { Flex, Heading, HStack, Link} from '@chakra-ui/react'
+import { Flex, Heading, HStack} from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 export default function NavBar() {
     return (
@@ -8,9 +9,9 @@ export default function NavBar() {
             <Flex alignItems="flex-end">
                 <Heading color="white" mr="60px" fontSize={20} letterSpacing="1.5px">TiendaOnline</Heading>
                 <HStack color="whiteAlpha.600" spacing="40px">
-                    <Link>Inicio</Link>
-                    <Link>Categorías</Link>
-                    <Link>Acerca de</Link>
+                    <Link to="/">Inicio</Link>
+                    <Link to="/categories">Categorías</Link>
+                    <Link to="/about">Acerca de</Link>
                 </HStack>
             </Flex>
             <CartWidget/>
