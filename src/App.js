@@ -6,6 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import ItemListContainer from './components/ItemListContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from './components/ItemDetailContainer';
+import Test from './test/Test';
 
 function App() {
   return (

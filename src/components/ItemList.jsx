@@ -8,7 +8,7 @@ export default function ItemList({ items }) {
   return (
     <>
       <Heading maxW={"container.lg"}>Productos</Heading>
-      {items.map((item) => (<Item item={item} />))}
+      {items.map((item) => (<Item key={item.id} item={item} />))}
     </>
   )
 }
