@@ -1,18 +1,27 @@
 import React from 'react'
 import CartWidget from './CartWidget'
-import { Flex, Heading, HStack } from '@chakra-ui/react'
+import { Container, Flex, Heading, HStack, Image, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 export default function NavBar() {
     return (
-        <Flex px="200px" py="20px" width="full" bg="blue.900" alignItems="flex-end" justifyContent="space-between">
-            <Flex alignItems="flex-end">
+        <Flex px="80px" py="20px" width="full" bg="#f4f4f6" alignItems="flex-end" justifyContent="space-between">
                 <Link to="/">
-                    <Heading color="white" mr="60px" fontSize={20} letterSpacing="1.5px">TiendaOnline</Heading>
+                    <Image
+                        height='1.6rem'
+                        objectFit='cover'
+                        src= '/assets/se-logotipo-osc-2022.png'
+                        alt='logotipo'
+                    />
                 </Link>
-                <HStack color="whiteAlpha.600" spacing="40px">
-                    <Link to="/categories">Categorías</Link>
-                    <Link to="/about">Acerca de</Link>
+            <Flex alignItems="flex-end">
+                <HStack color="#010224" fontWeight='bold' spacing="40px">
+                    <Link to="/categories">
+                    <Text fontSize='sm'>Categorías</Text>
+                    </Link>
+                    <Link to="/about">
+                    <Text fontSize='sm'>Acerca de</Text>
+                    </Link>
                 </HStack>
             </Flex>
             <CartWidget />

@@ -1,4 +1,4 @@
-import { Button, Container, Heading, Image, Text } from '@chakra-ui/react';
+import { Button, color, Container, Flex, Heading, Image, Text } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -9,18 +9,25 @@ export default function Item({ item }) {
   const navegar = useNavigate()
 
   return (
-    <Container maxW={"container.lg"} border={"2px"} borderColor={"blackAlpha.200"} borderRadius={"10px"} py={"4px"} my={"1rem"} >
+    <Container border={"2px"} borderColor={"blackAlpha.200"} borderRadius={"10px"} p={"1rem"} my={"1rem"} _hover={{
+      borderColor: "#010224",
+    }} >
+      <Flex direction='column' gap='10px'>
       <Image
-        height='200px'
+        height='400px'
         objectFit='cover'
         src={imgUrl}
       />
-      <Heading as='h4' size='md'>{name}</Heading>
+      <Heading as='h4' size='sm'>{name}</Heading>
       
       <Text fontSize='lg'>$ {price}</Text>
       {/* Navegacion con boton */}
-      <Button colorScheme='teal' variant='outline' onClick={() => navegar(`/product/${id}`)}>
+      <Button colorScheme='#010224' variant='outline' _hover={{
+      background: "#010224",
+      color: "#f4f4f6"
+    }} onClick={() => navegar(`/product/${id}`)}>
       Ver producto</Button>
+      </Flex>
     </Container>
   )
 }

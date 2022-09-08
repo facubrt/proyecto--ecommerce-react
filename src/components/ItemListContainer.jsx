@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react';
+import { Center, Container, Flex, Progress, Spinner } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import ItemList from './ItemList';
 import {data} from '../mocks/mockData'
@@ -18,8 +18,12 @@ export default function ItemListContainer() {
   }, [])
 
   return (
-    <Container maxW={"container.lg"}>
-      {loading ? 'cargando productos...' : <ItemList items={items}/>}
+    <Container maxW="full" maxH="full">
+      {/* Luego se puede cambiar la carga por shimmer loader */}
+      {loading 
+        ? <Center h='20rem'><Spinner alignSelf='center'   size='xl' /></Center>
+        : <ItemList items={items}
+      />}
     </Container>
   )
 }
