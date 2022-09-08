@@ -1,6 +1,7 @@
 import { Button, color, Container, Flex, Heading, Image, Text } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { BsArrowRightShort } from 'react-icons/bs'
 
 export default function Item({ item }) {
 
@@ -22,7 +23,7 @@ export default function Item({ item }) {
       
       <Text fontSize='lg'>$ {price}</Text>
       {/* Navegacion con boton */}
-      <Button colorScheme='#010224' variant='outline' _hover={{
+      <Button alignSelf="center" rightIcon={<BsArrowRightShort size="1.4rem"/>} colorScheme='#010224' variant='outline' _hover={{
       background: "#010224",
       color: "#f4f4f6"
     }} onClick={() => navegar(`/product/${id}`)}>
