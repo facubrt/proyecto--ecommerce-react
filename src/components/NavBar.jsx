@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function NavBar() {
     return (
-        <Flex px="80px" py="20px" width="full" bg="#f4f4f6" alignItems="flex-end" justifyContent="space-between">
+        <Flex zIndex="1" as="header" position="fixed" px="80px" py="20px" width="full" bg="white" alignItems="flex-end" justifyContent="space-between">
                 <Link to="/">
                     <Image
                         height='1.6rem'
@@ -15,12 +15,12 @@ export default function NavBar() {
                     />
                 </Link>
             <Flex alignItems="flex-end">
-                <HStack color="#010224" fontWeight='bold' spacing="40px">
-                    <Link to="/categories">
-                    <Text fontSize='sm'>Categorías</Text>
+                <HStack color="#010224" spacing="40px">
+                    <Link to="/categoria/libros">
+                    <Text fontSize='sm'>Libros</Text>
                     </Link>
-                    <Link to="/about">
-                    <Text fontSize='sm'>Acerca de</Text>
+                    <Link to="/categoria/ebooks">
+                    <Text fontSize='sm'>Ebooks</Text>
                     </Link>
                 </HStack>
             </Flex>

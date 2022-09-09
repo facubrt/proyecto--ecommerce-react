@@ -13,7 +13,6 @@ export default function ItemDetailContainer() {
   useEffect(() => {
     setLoading(true);
     data.then((res) => {
-      console.log(res)
       setItemDetail(res.find((item) => item.id === JSON.parse(id)))
     })
     .catch((error) => console.log(error))
@@ -22,7 +21,7 @@ export default function ItemDetailContainer() {
   }, [])
 
   return (
-    <Container maxW={"container.lg"}>
+    <Container maxW={"full"} py="1rem">
       {loading ? 'cargando detalle del producto...' : <ItemDetail itemDetail={itemDetail}/>}
     </Container>
   )

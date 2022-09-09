@@ -10,12 +10,12 @@ export default function Item({ item }) {
   const navegar = useNavigate()
 
   return (
-    <Container border={"2px"} borderColor={"blackAlpha.200"} borderRadius={"10px"} p={"1rem"} my={"1rem"} _hover={{
-      borderColor: "#010224",
+    <Container p={"1rem"} my={"1rem"} _hover={{
+      background: "#f3f3f3",
     }} >
       <Flex direction='column' gap='10px'>
       <Image
-        height='400px'
+        height='300px'
         objectFit='cover'
         src={imgUrl}
       />
@@ -26,7 +26,7 @@ export default function Item({ item }) {
       <Button alignSelf="center" rightIcon={<BsArrowRightShort size="1.4rem"/>} colorScheme='#010224' variant='outline' _hover={{
       background: "#010224",
       color: "#f4f4f6"
-    }} onClick={() => navegar(`/product/${id}`)}>
+    }} onClick={() => navegar(`/producto/${id}`)}>
       Ver producto</Button>
       </Flex>
     </Container>
