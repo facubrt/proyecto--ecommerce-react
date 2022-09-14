@@ -1,15 +1,16 @@
-import { Container, Divider, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react';
+import { Button, Container, Divider, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import ItemCount from './ItemCount';
 
 export default function ItemDetail({ itemDetail }) {
 
   const { name, description, category, price, stock, imgUrl, id } = itemDetail;
-  const [contador, setContador] = useState(0);
+  const [count, setCount] = useState(1);
+  const [comprar, setComprar] = useState(false);
 
-  console.log(itemDetail)
-  const onAdd = (value) => {
-    setContador(contador + value);
+  const onAdd = () => {
+    /* SE DEFINE LA COMPRA Y SE AGREGAN LOS PRODUCTOS AL CARRITO */
+    setComprar(true);
   }
 
   return (
@@ -28,7 +29,7 @@ export default function ItemDetail({ itemDetail }) {
             </VStack>
             <Heading color="blackAlpha.800" fontWeight="normal" size='md'>$ {price}</Heading>
           </HStack>
-          <ItemCount stock={stock} initial={contador} onAdd={onAdd} />
+          <ItemCount stock={stock} initial={1} onAdd={onAdd} count={count} setCount={setCount} />
           <Divider />
           <Heading color="blackAlpha.500" size='dm'>Descripción</Heading>
           <Text>{description}</Text>

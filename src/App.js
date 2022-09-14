@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar';
+import Cart from './components/Cart';
 import Footer from './components/Footer';
 
 import { ChakraProvider } from '@chakra-ui/react';
@@ -22,6 +23,7 @@ export default function App() {
             <Route exact path='/' element={<ItemListContainer />} />
             <Route exact path='/categoria/:category' element={<ItemListContainer />} />
             <Route exact path='/producto/:id' element={<ItemDetailContainer />} />
+            <Route exact path='/cart' element={<Cart />} />
           </Routes>
           {/* FOOTER */}
           <Footer />
