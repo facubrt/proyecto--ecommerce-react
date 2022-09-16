@@ -1,5 +1,6 @@
 import { Button, Container, Divider, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react'
+import { useCart } from '../context/CartContext';
 import ItemCount from './ItemCount';
 
 export default function ItemDetail({ itemDetail }) {
@@ -7,9 +8,19 @@ export default function ItemDetail({ itemDetail }) {
   const { name, description, category, price, stock, imgUrl, id } = itemDetail;
   const [count, setCount] = useState(1);
   const [comprar, setComprar] = useState(false);
+  const {addItem} = useCart()
 
   const onAdd = () => {
     /* SE DEFINE LA COMPRA Y SE AGREGAN LOS PRODUCTOS AL CARRITO */
+    let purchase ={
+      id,
+      name,
+      price,
+      stock,
+      imgUrl,
+      quantity: count,
+    }
+    addItem(purchase)
     setComprar(true);
   }
 

@@ -1,4 +1,4 @@
-import { Button, Container, Flex, HStack, Icon } from '@chakra-ui/react';
+import { Button, Flex, HStack, Icon } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
@@ -11,15 +11,15 @@ export default function ItemCount({ stock, initial, onAdd, count, setCount }) {
   const navegar = useNavigate()
 
   useEffect(() => {
-    if (count == initial) {
+    if (count === initial) {
       setDisableSubstractButton(true);
-    } else if (count == stock) {
+    } else if (count === stock) {
       setDisableAddButton(true);
     } else {
       setDisableAddButton(false);
       setDisableSubstractButton(false);
     }
-  });
+  }, [count, initial, stock]);
 
   const restar = () => {
     if (count > initial){

@@ -1,6 +1,6 @@
 import React from 'react'
 import CartWidget from './CartWidget'
-import { Container, Flex, Heading, HStack, Image, Text } from '@chakra-ui/react'
+import {Flex, HStack, Image, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 export default function NavBar() {
