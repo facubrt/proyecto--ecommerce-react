@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function NavBar() {
     return (
-        <Flex zIndex="1" as="header" position="fixed" px="80px" py="20px" width="full" bg="white" alignItems="flex-end" justifyContent="space-between">
+        <Flex zIndex="1" position="fixed" px="80px" py="20px" width="full" bg="white" alignItems="flex-end" justifyContent="space-between">
                 <Link to="/">
                     <Image
                         height='1.6rem'

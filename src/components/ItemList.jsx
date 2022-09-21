@@ -1,4 +1,4 @@
-import { Container, Heading, HStack, SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 import React from 'react'
 import Item from './Item'
 

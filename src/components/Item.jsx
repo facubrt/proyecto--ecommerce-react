@@ -1,11 +1,11 @@
-import { Button, color, Container, Flex, Heading, Image, Text } from '@chakra-ui/react';
-import React, { useState } from 'react'
+import { Button, Container, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { BsArrowRightShort } from 'react-icons/bs'
 
 export default function Item({ item }) {
 
-  const {imgUrl, name, description, price, stock, id} = item
+  const {imgUrl, name, price, id} = item
 
   const navegar = useNavigate()
 
@@ -21,7 +21,7 @@ export default function Item({ item }) {
       />
       <Heading as='h4' size='sm'>{name}</Heading>
       
-      <Text fontSize='lg'>$ {price}</Text>
+      <Text fontSize='lg'>${price}</Text>
       {/* Navegacion con boton */}
       <Button alignSelf="center" rightIcon={<BsArrowRightShort size="1.4rem"/>} colorScheme='#010224' variant='outline' _hover={{
       background: "#010224",

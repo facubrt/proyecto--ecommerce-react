@@ -1,4 +1,4 @@
-import { Button, Container, Divider, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react';
+import { Container, Divider, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import { useCart } from '../context/CartContext';
 import ItemCount from './ItemCount';

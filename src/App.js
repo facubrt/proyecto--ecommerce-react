@@ -23,10 +23,10 @@ export default function App() {
           <NavBar />
           <Routes>
             <Route exact path='/' element={<ItemListContainer />} />
-            <Route exact path='/test' element={<Test />} />
             <Route exact path='/categoria/:category' element={<ItemListContainer />} />
             <Route exact path='/producto/:id' element={<ItemDetailContainer />} />
             <Route exact path='/cart' element={<Cart />} />
+            <Route exact path='/order' />
           </Routes>
           {/* FOOTER */}
           <Footer />

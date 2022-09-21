@@ -1,4 +1,4 @@
-import { Center, Container, Flex, Progress, Spinner } from '@chakra-ui/react';
+import { Center, Container, Spinner } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import ItemList from './ItemList';
 import { data } from '../mocks/mockData'

@@ -1,6 +1,5 @@
-import { Center, Flex, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Center, Text} from '@chakra-ui/react'
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
