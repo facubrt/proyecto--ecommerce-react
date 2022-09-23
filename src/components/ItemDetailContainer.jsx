@@ -1,8 +1,9 @@
 import { Container } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { data } from '../mocks/mockData';
 import ItemDetail from './ItemDetail';
+import { collection, doc,  getDoc } from 'firebase/firestore'
+import { db } from '../firebase/firebase'
 
 export default function ItemDetailContainer() {
 
@@ -12,8 +13,17 @@ export default function ItemDetailContainer() {
 
   useEffect(() => {
     setLoading(true);
-    data.then((res) => {
-      setItemDetail(res.find((item) => item.id === JSON.parse(id)))
+    // debemos pasar la base de datos y la coleccion
+    const coleccionProductos = collection(db, "products")
+    // hacemos una referencia hacia un documento en particular
+    const referenciaDoc = doc(coleccionProductos, id)
+    // traemos un documento
+    getDoc(referenciaDoc)
+    .then((result) => {
+      setItemDetail({
+        id: result.id,
+        ...result.data()
+      })
     })
     .catch((error) => console.log(error))
     .finally(() => setLoading(false));

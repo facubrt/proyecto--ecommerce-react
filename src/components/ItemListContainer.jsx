@@ -1,8 +1,9 @@
 import { Center, Container, Spinner } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import ItemList from './ItemList';
-import { data } from '../mocks/mockData'
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../firebase/firebase'
 
 export default function ItemListContainer() {
 
@@ -11,23 +12,24 @@ export default function ItemListContainer() {
   const { category } = useParams();
 
   useEffect(() => {
-    setLoading(true)
-    data.then((res) => {
-      if (category) {
-        setItems(res.filter((item) => item.category === category));
-      } else {
-        setItems(res);
-      }
+    setLoading(true);
+    const productos = category ? query(collection(db, "products"), where("category", "==", category)) : collection(db, "products")
+    getDocs(productos).then((result) =>{
+      const lista = result.docs.map((product) => {
+        return {
+          id: product.id,
+          ...product.data()
+        }
+      })
+      setItems(lista)
     })
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+    .catch((error) => console.log(error))
+    .finally(() => setLoading(false));
 
   }, [category])
 
   return (
     <Container maxW="full" maxH="full" py="6rem">
-      {/* Luego se puede cambiar la carga por shimmer loader */}
-
       {loading
         ? <Center h='20rem'><Spinner alignSelf='center' size='xl' /></Center>
         : <ItemList items={items}

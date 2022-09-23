@@ -8,7 +8,6 @@ import ItemListContainer from './components/ItemListContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { useState } from 'react';
-import Test from './test/Test';
 import { CartProvider } from './context/CartContext'
 
 export default function App() {
