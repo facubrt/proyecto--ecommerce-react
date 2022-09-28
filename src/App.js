@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { useState } from 'react';
 import { CartProvider } from './context/CartContext'
+import Order from './components/Order';
 
 export default function App() {
 
@@ -25,7 +26,7 @@ export default function App() {
             <Route exact path='/categoria/:category' element={<ItemListContainer />} />
             <Route exact path='/producto/:id' element={<ItemDetailContainer />} />
             <Route exact path='/cart' element={<Cart />} />
-            <Route exact path='/order' />
+            <Route exact path='/order' element={<Order/>} />
           </Routes>
           {/* FOOTER */}
           <Footer />

@@ -27,7 +27,7 @@ export default function Cart() {
           <Text fontSize='lg' my="2rem">Total a pagar: ${cartTotal()}</Text>
           <HStack>
           <Button colorScheme='gray' my="2rem" onClick={clear}>Vaciar Carrito</Button>
-          <Button background='#6393ff' color='#ffffff' _hover={{background: '#1a67ff'}} my="2rem">Terminar Compra</Button>
+          <Button background='#6393ff' onClick={() => navegar(`/order`)} color='#ffffff' _hover={{background: '#1a67ff'}} my="2rem">Terminar Compra</Button>
           </HStack>
           </VStack>
         }
