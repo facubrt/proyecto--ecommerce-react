@@ -20,7 +20,7 @@ Instalación del proyecto utilizando npm:
 ## Visualización
 A continuación puede observarse un recorrido por la página web donde se muestran las diferentes pantallas y se lleva a cabo una compra con su correspondiente generación de orden en la base de datos.
 
-![](https://media.giphy.com/media/kVUu7MS2u4DzclHFwf/giphy.gif)
+![](https://media.giphy.com/media/9886QFGtb40VhCcgWs/giphy.gif)
 
 ## Modelado de datos
 Los datos utilizados en este proyecto fueron modelados en una base de datos NoSQL utilizando colecciones y documentos. Los datos se distribuyen como sigue:
