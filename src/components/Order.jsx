@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Button, Container, Flex, FormControl, Heading, Input, Text, VStack } from '@chakra-ui/react'
+import { Button, Center, Container, Flex, FormControl, Heading, Input, Spinner, Text, VStack } from '@chakra-ui/react'
 import { useCart } from '../context/CartContext';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getDocs, getFirestore, query, where, writeBatch} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 export default function Order() {
@@ -10,15 +10,20 @@ export default function Order() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [idCompra, setIdCompra] = useState('');
+  const [loading, setLoading] = useState(false);
   const navegar = useNavigate()
 
   const { cart, clear, cartTotal } = useCart()
 
-  function terminarCompra(e) {
+  async function terminarCompra(e) {
     e.preventDefault();
-    if (!name || !phone || !email){
+    setLoading(true)
+    const db = getFirestore();
+    
+    if (!name || !phone || !email) {
       return
     }
+
     let order = {
       buyer: {
         name: name,
@@ -26,20 +31,59 @@ export default function Order() {
         email: email,
       },
       cart: cart,
+      date: new Date(),
       total: cartTotal(),
     }
-    const db = getFirestore();
-    const ordersCollection = collection(db, 'orders');
-    addDoc(ordersCollection, order).then(({ id }) => {
-      setIdCompra(id);
-    });
-    clear();
+
+    const batch = writeBatch(db)
+    const ordersRef = collection(db, 'orders')
+    const productsRef = collection(db, 'products')
+
+    const docs = query(productsRef, where('id', 'in', cart.map(item => item.id.toString())))
+
+    const products = await getDocs(docs)
+
+    const sinStock = []
+
+    products.docs.forEach((doc) => {
+      const itemInCart = cart.find(item => item.id === doc.id)
+      console.log(doc.data().stock)
+      console.log(itemInCart.stock)
+      if (doc.data().stock >= itemInCart.stock) {
+        batch.update(doc.ref, {
+          stock: doc.data().stock - itemInCart.quantity
+        })
+      } else {
+        sinStock.push(itemInCart)
+      }
+    })
+
+    if (sinStock.length === 0) {
+      batch.commit()
+        .then(() => {
+          addDoc(ordersRef, order)
+            .then((doc) => {
+              setIdCompra(doc.id)
+              clear()
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+            .finally(() => {
+              setLoading(false)
+            })
+
+        })
+    } else {
+
+      alert("Hay items sin stock")
+      console.log(sinStock)
+    }
   }
 
   return (
     <Container maxW={"full"} py="10rem">
       <Flex justifyContent={"center"} alignItems={"center"}>
-
         {!idCompra
           ?
           <form action="submit" onSubmit={terminarCompra}>
@@ -55,20 +99,20 @@ export default function Order() {
                 <Input value={phone} onChange={(e) => setPhone(e.target.value)} variant='filled' placeholder='Ingresa tu teléfono' size='md' type={'number'} />
               </FormControl>
 
-              <Button type={'submit'} alignSelf="center" p={"10px"} size="1.4rem" colorScheme='#010224' variant='outline' _hover={{
+              {loading 
+              ? <Center h='20rem'><Spinner alignSelf='center' size='xl' /></Center>
+              : <Button type={'submit'} alignSelf="center" p={"10px"} size="1.4rem" colorScheme='#010224' variant='outline' _hover={{
                 background: "#010224",
                 color: "#f4f4f6"
               }} >
-                Terminar compra</Button>
-
-
+                Terminar compra</Button>}
             </VStack>
           </form>
-          : <VStack>
+          : <Flex direction='column' align='center' gap={10}>
             <Heading size='lg'>¡Gracias por tu compra!</Heading>
             <Text fontSize='lg'>Tu orden se registró correctamente con el id: {idCompra}</Text>
             <Button background='#6393ff' color='#ffffff' onClick={() => navegar('/')} _hover={{ background: '#1a67ff' }} my="2rem">Volver a la tienda</Button>
-          </VStack>}
+          </Flex>}
       </Flex>
     </Container>
   )

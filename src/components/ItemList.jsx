@@ -4,9 +4,12 @@ import Item from './Item'
 
 export default function ItemList({ items }) {
 
-  console.log(items)
   return (
-    <SimpleGrid columns={3} spacing={10}>
+    <SimpleGrid columns={[
+      1,
+      2,
+      3,
+    ]} spacing={10}>
       
       {items.map((item) => (<Item key={item.id} item={item} />))}
       </SimpleGrid>

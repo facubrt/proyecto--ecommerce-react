@@ -13,8 +13,6 @@ import Order from './components/Order';
 
 export default function App() {
 
-  const [color, setColor] = useState('dark');
-
   return (
     <ChakraProvider>
       <CartProvider>

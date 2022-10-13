@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react';
+import { Center, Container, Spinner } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
@@ -32,7 +32,7 @@ export default function ItemDetailContainer() {
 
   return (
     <Container maxW={"full"} py="1rem">
-      {loading ? 'cargando detalle del producto...' : <ItemDetail itemDetail={itemDetail}/>}
+      {loading ? <Center maxH='full' h='100vh'><Spinner alignSelf='center' size='xl' /></Center> : <ItemDetail itemDetail={itemDetail}/>}
     </Container>
   )
 }
